@@ -21,7 +21,7 @@ Empty Folder Radar extracts one focused job from large disk-cleanup suites: find
 
 ## Use
 
-1. Download and extract the latest Windows ZIP from [Releases](https://github.com/configcrate/empty-folder-radar/releases/latest).
+1. Download and extract the latest Windows ZIP from [Releases](https://github.com/configcrate/empty-folder-radar/releases/latest). Version 0.1.1 includes the high-DPI picker-layout fix.
 2. Run `empty-folder-radar.exe`.
 3. Select or drag in a folder.
 4. Review the empty branches and uncheck anything you want to keep.

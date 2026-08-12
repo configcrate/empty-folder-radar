@@ -1,18 +1,20 @@
-# Empty Folder Radar v0.1.0
+# Empty Folder Radar v0.1.1
 
-The first public release of a focused Windows empty-folder inspector.
+This maintenance release fixes the folder-picker layout at larger Windows display scaling.
+
+## Fixed
+
+- The picker title, hint, and button now follow each other's measured rendered height.
+- The button keeps clear space above it and below it instead of using a fixed Y coordinate.
+- The picker panel grows automatically at 125%, 150%, and higher display scaling.
+- The magnifying-glass icon remains aligned with the picker heading.
 
 ## Included
 
-- Select or drag in one folder.
-- Find directly empty folders and recursively empty folder trees.
-- Collapse an empty tree into a single review row.
-- Select all, select none, open a result, and rescan.
-- Send selected branches to the Windows Recycle Bin.
-- Protect drive roots, Windows, Program Files, the whole user profile, and the selected root.
-- Skip links, junctions, and inaccessible directories.
-- Chinese/English interface with automatic detection and manual switching.
-- Portable Windows executable with no installation, admin access, networking, or telemetry.
+- Empty leaves and recursively empty folder-tree detection.
+- Safe branch collapsing, review checkboxes, and Recycle Bin cleanup.
+- Protected roots, junction skipping, and immediate pre-delete revalidation.
+- Chinese and English interface.
 
 ## Requirements
 

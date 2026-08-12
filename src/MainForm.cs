@@ -79,7 +79,7 @@ namespace ConfigCrate.EmptyFolderRadar
                 localeButton.Location = new Point(header.ClientSize.Width - localeButton.Width - 26, (header.Height - localeButton.Height) / 2);
             };
 
-            Panel pickerHost = new Panel { Dock = DockStyle.Top, Height = 178, BackColor = Bg, Padding = new Padding(26, 4, 26, 16) };
+            Panel pickerHost = new Panel { Dock = DockStyle.Top, Height = 204, BackColor = Bg, Padding = new Padding(26, 4, 26, 16) };
             Panel picker = new Panel { Dock = DockStyle.Fill, BackColor = Surface, BorderStyle = BorderStyle.FixedSingle, AllowDrop = true, Cursor = Cursors.Hand };
             Label icon = new Label { Text = "⌕", ForeColor = Mint, Font = new Font("Segoe UI Symbol", 30F), AutoSize = true, Location = new Point(32, 38), Cursor = Cursors.Hand };
             chooseTitle = new Label { ForeColor = Main, Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold), AutoSize = true, Location = new Point(105, 26), Cursor = Cursors.Hand };
@@ -88,6 +88,18 @@ namespace ConfigCrate.EmptyFolderRadar
             foreach (Control c in new Control[] { picker, icon, chooseTitle, chooseHint }) c.Click += delegate { ChooseFolder(); };
             picker.DragEnter += DragEntered; picker.DragDrop += Dropped;
             picker.Controls.Add(icon); picker.Controls.Add(chooseTitle); picker.Controls.Add(chooseHint); picker.Controls.Add(chooseButton); pickerHost.Controls.Add(picker);
+            picker.Layout += delegate
+            {
+                int contentLeft = icon.Right + 20;
+                chooseTitle.Location = new Point(contentLeft, 24);
+                chooseHint.Location = new Point(contentLeft + 3, chooseTitle.Bottom + 8);
+                chooseButton.Location = new Point(contentLeft, chooseHint.Bottom + 18);
+                icon.Top = Math.Max(24, chooseTitle.Top + (chooseTitle.Height - icon.Height) / 2);
+                int pickerBottomPadding = 24;
+                int desiredPickerHeight = chooseButton.Bottom + pickerBottomPadding;
+                int desiredHostHeight = desiredPickerHeight + pickerHost.Padding.Top + pickerHost.Padding.Bottom;
+                if (pickerHost.Height != desiredHostHeight) pickerHost.Height = desiredHostHeight;
+            };
 
             Panel summary = new Panel { Dock = DockStyle.Top, Height = 88, BackColor = Bg };
             resultTitle = new Label { ForeColor = Main, Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold), AutoSize = true, Location = new Point(26, 15) };
